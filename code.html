@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PORTILLO | High-Performance Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@400;700&amp;family=Geist:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .glow-primary {
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+        .glow-text-primary {
+            text-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+        }
+        .matrix-bg {
+            background-color: #000000;
+        }
+        .terminal-cursor::after {
+            content: '_';
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            from, to { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .line-spacer {
+            border-bottom: 1px solid #222222;
+        }
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#72ff70",
+                        "on-primary-container": "#007117",
+                        "surface-container-highest": "#353535",
+                        "inverse-primary": "#006e16",
+                        "surface-dim": "#131313",
+                        "on-tertiary-fixed": "#2c1701",
+                        "inverse-on-surface": "#303030",
+                        "primary-container": "#00ff41",
+                        "tertiary-fixed": "#ffdcbd",
+                        "secondary-container": "#454747",
+                        "on-primary": "#003907",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2a",
+                        "background": "#131313",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#e7bf99",
+                        "surface-variant": "#353535",
+                        "on-secondary-fixed": "#1a1c1c",
+                        "outline-variant": "#3b4b37",
+                        "error-container": "#93000a",
+                        "on-background": "#e2e2e2",
+                        "surface-container": "#1f1f1f",
+                        "on-secondary-fixed-variant": "#454747",
+                        "on-surface": "#e2e2e2",
+                        "on-primary-fixed-variant": "#00530e",
+                        "tertiary": "#fff8f4",
+                        "on-tertiary-fixed-variant": "#5d4124",
+                        "secondary-fixed-dim": "#c6c6c7",
+                        "on-tertiary-container": "#7a5b3c",
+                        "on-primary-fixed": "#002203",
+                        "on-surface-variant": "#b9ccb2",
+                        "primary": "#ebffe2",
+                        "surface": "#131313",
+                        "surface-bright": "#393939",
+                        "secondary-fixed": "#e2e2e2",
+                        "on-secondary": "#2f3131",
+                        "on-tertiary": "#442b10",
+                        "inverse-surface": "#e2e2e2",
+                        "outline": "#84967e",
+                        "on-secondary-container": "#b4b5b5",
+                        "surface-tint": "#00e639",
+                        "surface-container-low": "#1b1b1b",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#00e639",
+                        "tertiary-container": "#ffd5ae",
+                        "secondary": "#c6c6c7",
+                        "surface-container-lowest": "#0e0e0e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "lg": "64px",
+                        "gutter": "24px",
+                        "xl": "128px",
+                        "margin-desktop": "80px",
+                        "md": "32px",
+                        "sm": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-caps": ["JetBrains Mono"],
+                        "code-sm": ["JetBrains Mono"],
+                        "display": ["Geist"],
+                        "headline-lg": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "headline-lg-mobile": ["Geist"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                        "code-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display": ["84px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "800"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary">
+<div class="noise-overlay"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-background dark:bg-background z-50 border-b border-outline-variant">
+<div class="flex justify-between items-center h-16 px-margin-desktop max-w-[1200px] mx-auto w-full">
+<div class="font-display text-headline-md font-bold text-on-background dark:text-on-background tracking-tighter">
+                PORTILLO<span class="text-primary-container">_</span>
+</div>
+<nav class="hidden md:flex items-center gap-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#bio">BIO</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#work">WORK</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant hover:text-on-surface transition-colors" href="#contact">CONTACT</a>
+<button class="ml-sm bg-transparent border border-on-background text-on-background font-label-caps text-label-caps px-sm py-xs hover:bg-primary-container hover:text-on-primary transition-all duration-300 active:scale-95">
+                    INQUIRY
+                </button>
+</nav>
+<button class="md:hidden text-on-background">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[795px] flex flex-col justify-center items-center matrix-bg px-margin-mobile overflow-hidden transition-all duration-700 opacity-100" data-stitch-vh="h-[795px]===h-[90vh]">
+<canvas class="absolute inset-0 w-full h-full" id="matrix-canvas"></canvas>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="relative z-10 text-center max-w-[1200px] mx-auto w-full">
+<div class="inline-flex items-center gap-base mb-md px-sm py-xs border border-outline-variant bg-surface-container-lowest/50 backdrop-blur-sm">
+<span class="flex h-2 w-2 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-container opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary-container"></span>
+</span>
+<span class="font-code-sm text-code-sm text-primary-fixed uppercase tracking-widest">SYSTEM_LIVE: AVAILABLE FOR WORK</span>
+</div>
+<h1 class="font-display text-display mb-xs glow-text-primary md:leading-[1.1] leading-[1.2] text-[64px] md:text-[84px]">
+                    JACOB PORTILLO
+                </h1>
+<div class="flex justify-center mb-md">
+<img alt="Computer Icon" class="w-16 h-16 object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAry-G6tM_1sS0eSIMLyXSUDzXXF9PrCOLZw5rMlX9U2a94x2L4HeXZl0SlvPGArO7RV3q5hplyCJxcYUM8xoN8b22wYWgotnHyuYBDJU3lILXECvO1mbHLm3-njQRcR6GI1fZ64MKd0StHWcRHeRRevCJa_D9mvkIPw64L_iRwyBD1T8-HFWh3Sun6fmmUUNoCH3wI2WuahyXmX3G6MzWPO6K50SU1adCz1D52NTwr76uVV5yROPRKlZaM3raShA9jzZjeRMypqTfb"/>
+</div>
+<p class="font-code-sm text-code-sm text-on-surface-variant mb-lg max-w-2xl mx-auto uppercase tracking-tighter">WEBSITE DESIGNER</p>
+<div class="flex flex-col sm:flex-row gap-gutter justify-center items-center">
+<a class="w-full sm:w-auto px-lg py-sm bg-transparent border border-white text-on-background font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary hover:border-primary-container glow-primary transition-all duration-300 text-center" href="#work">
+                        VIEW MY WORK
+                    </a>
+<a class="w-full sm:w-auto px-lg py-sm font-label-caps text-label-caps text-on-surface-variant hover:text-primary-fixed transition-colors flex items-center justify-center gap-xs" href="#contact">
+                        CONNECT_TERMINAL <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-base left-1/2 -translate-x-1/2 flex flex-col items-center gap-xs">
+<span class="font-code-sm text-[10px] text-outline opacity-50 uppercase">Scroll</span>
+<div class="w-[1px] h-lg bg-gradient-to-b from-primary-container to-transparent"></div>
+</div>
+</section>
+<!-- Bio Section -->
+<section class="py-xl px-margin-desktop max-w-[1200px] mx-auto border-t border-outline-variant transition-all duration-700 opacity-100" id="bio">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg items-center">
+<div class="md:col-span-5 relative group">
+<div class="absolute -inset-2 border border-outline-variant transition-colors group-hover:border-primary-container"></div>
+<img alt="Jacob Portillo" class="w-full aspect-square object-cover filter grayscale hover:grayscale-0 transition-all duration-500" src="https://lh3.googleusercontent.com/aida/ADBb0ujUoCHPvw4t5CD_fkYVjGumdK5liX2p7bkyafKlnnsG8stac14CF01__IEqI4ZYj2EeT_uZxEWYTOSsl7ryk2TKVcaAdJZnnSpbFMCUgnachbM07BZ8ENf6Snsmoq6tQgVOzerwkmpkF0lcbHM2HJn2FU3FfplqCdbtObOyiL5CDTHjHyN4CQMqkRnf7Y_-wYWhNcWFFnWDxe6h9_zGq0X_1fdjRRy0I8NOm5MehovnwpjqfVI_MXrKsmsB"/>
+<div class="absolute bottom-0 right-0 bg-background border-l border-t border-outline-variant px-sm py-xs font-code-sm text-code-sm text-primary-fixed">
+                        IMG_001.JPG
+                    </div>
+</div>
+<div class="md:col-span-7">
+<h2 class="font-headline-lg text-headline-lg mb-md leading-none">
+<span class="text-outline">01.</span> THE_ARCHITECT
+                    </h2>
+<div class="space-y-sm">
+<p class="font-body-lg text-body-lg text-on-surface">
+                            I am a software developer dedicated to building elegant, high-impact digital solutions. My approach blends technical rigor with minimalist aesthetics, ensuring every line of code serves a specific, optimized purpose.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            Based in the digital ether, I specialize in full-stack architecture, high-performance systems, and experimental interfaces. I believe that true complexity should be hidden behind a veil of simplicity.
+                        </p>
+</div>
+<div class="mt-lg grid grid-cols-2 gap-gutter border-t border-outline-variant pt-md">
+<div>
+<span class="font-label-caps text-label-caps text-outline block mb-xs">STACK</span>
+<ul class="font-code-sm text-code-sm text-primary-fixed space-y-1">
+<li>&gt; REACT_NEXTJS</li>
+<li>&gt; TYPESCRIPT</li>
+<li>&gt; NODE_SYSTEMS</li>
+<li>&gt; POSTGRESQL</li>
+</ul>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-outline block mb-xs">EXPERTISE</span>
+<ul class="font-code-sm text-code-sm text-on-surface-variant space-y-1">
+<li>UI ARCHITECTURE</li>
+<li>API DESIGN</li>
+<li>LOW-LEVEL OPT</li>
+<li>CYBER_STYLING</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Work Section -->
+<section class="py-xl bg-surface-container-lowest border-y border-outline-variant transition-all duration-700 opacity-100" id="work">
+<div class="px-margin-desktop max-w-[1200px] mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+<div>
+<span class="font-code-sm text-code-sm text-primary-fixed block mb-xs terminal-cursor">PORTFOLIO_QUERY</span>
+<h2 class="font-headline-lg text-headline-lg uppercase">Selected Work</h2>
+</div>
+<div class="text-right hidden md:block">
+<span class="font-code-sm text-code-sm text-outline">v.2.0.4 - STABLE_BUILD</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Project Card 1 -->
+<div class="group border border-outline-variant hover:border-primary-container transition-all duration-300 flex flex-col">
+<div class="relative overflow-hidden aspect-video">
+<img alt="Neural Net Dashboard" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAors1cr9YTimT1EpDx_KnNSPQfVQSaWUxZ5DvvJ_p4UznluDxWfM1r8nyZna4z1FJL_oeycEYtf1dJ56TxEQfx_o23COjzTvfxB9HvedNzuQZGd5Kn9cnKS0q80m1l3f79DHCuvVxIpaNP6K2Ou6lSHs0bQZ_4M9GlFJUP8gPWcFxtNWVJv-TboKW_VwIuVmcwf-gFspIbUTRKcGqZH2z12cLUNpdIcamoRkjLKDAuIA9CEyplDdOwwic1n22lxLAUeBMrv3SSkYZS"/>
+<div class="absolute top-sm right-sm bg-background/80 backdrop-blur-md px-xs py-[2px] border border-outline-variant">
+<span class="font-code-sm text-[10px] text-primary-fixed">DEPLOYED</span>
+</div>
+</div>
+<div class="p-md flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-code-sm text-[10px] text-outline">PROJECT_01</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary-fixed transition-colors">NEURAL_NET DASHBOARD</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                                Real-time monitoring platform for distributed machine learning clusters.
+                            </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">GO</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">GRPC</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">D3.JS</span>
+</div>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="group border border-outline-variant hover:border-primary-container transition-all duration-300 flex flex-col">
+<div class="relative overflow-hidden aspect-video">
+<img alt="OS Core Interface" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAd9gyw9ad1v7oa6nHBoS1R9Um89LpgsthYIChqzCzBzPZdrUHay-atuzZ1S09PeAu8qUibxYGfAf450zsuEBm1cQIUlK-RkL1IKaHT5ThEXPZUp4QsQeq-JWhFKnBFsFbJi4Xyu8wg3v1kWiirPWuXSFzGolESUD8Yg2iljkjyboaLRIA_TNqgCAQA6JEf6zq6a-aNeCZJgySVhPE4E5RcXe3eJPPS9LlFNSjjDtRqlw0Blx2ctOJoLMoTQhy9kDNK8syUnQSBuYPX"/>
+<div class="absolute top-sm right-sm bg-background/80 backdrop-blur-md px-xs py-[2px] border border-outline-variant">
+<span class="font-code-sm text-[10px] text-primary-fixed">BETA</span>
+</div>
+</div>
+<div class="p-md flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-code-sm text-[10px] text-outline">PROJECT_02</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary-fixed transition-colors">OS_CORE INTERFACE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                                A custom desktop environment shell built for maximum efficiency.
+                            </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">C++</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">QT</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">OPENGL</span>
+</div>
+</div>
+</div>
+<!-- Project Card 3 -->
+<div class="group border border-outline-variant hover:border-primary-container transition-all duration-300 flex flex-col">
+<div class="relative overflow-hidden aspect-video">
+<img alt="Crypt Vault" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ85ALPudLE3JA0STs1arwY6GsPvt6QMGFZ3Ap1dgAnvqZenzUPbkVB4f7UDcJF8dsh4eRMAWICMmhoqHPog-RF6prZAXcSa3fOtv6LHm7QbEJJWH_HePcGzKU9fydMvmT6ec5Oh6b-m3IAKeiYlm9d1S2hn9wvgz6yRgnKr71iFTWXvk7JDLnLkp-WkclOprQ7cbsZzMqXcjpzYUVhWF1maQ5pvxtgqX3TU8yb1qS0R9MTtDVMvlwQTjnSBBZ6Gyj0Q-gARjdhF1D"/>
+</div>
+<div class="p-md flex-grow">
+<div class="flex items-center gap-xs mb-xs">
+<span class="font-code-sm text-[10px] text-outline">PROJECT_03</span>
+<div class="h-[1px] flex-grow bg-outline-variant"></div>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm group-hover:text-primary-fixed transition-colors">CRYPT_VAULT V3</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                                Decentralized asset management with multi-signature verification.
+                            </p>
+<div class="flex flex-wrap gap-xs">
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">SOLIDITY</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">RUST</span>
+<span class="px-xs py-[2px] border border-outline-variant font-code-sm text-[10px] text-outline">WASM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-xl px-margin-desktop max-w-[1200px] mx-auto transition-all duration-700 opacity-100" id="contact">
+<div class="bg-surface-container border border-outline-variant p-lg md:p-xl relative overflow-hidden">
+<!-- Decorative Code Background -->
+<div class="absolute top-0 right-0 p-sm opacity-5 pointer-events-none select-none">
+<pre class="font-code-sm text-[10px] leading-tight">function transmit(payload) {
+  const connection = new Terminal({
+    auth: "RSA_4096",
+    vector: "ENCRYPT_01"
+  });
+  return connection.send(payload);
+}
+                    </pre>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg relative z-10">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-md leading-none uppercase">
+                            Establish<br/><span class="text-primary-fixed">Connection</span>
+</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-lg">
+                            Ready to build something superior? Transmission lines are open for inquiries, collaborations, or technical consultations.
+                        </p>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed">terminal</span>
+<span class="font-code-sm text-code-sm">root@jportillo.dev</span>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed">location_on</span>
+<span class="font-code-sm text-code-sm">LAT: 34.0522° N, LON: 118.2437° W</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-end space-y-md">
+<form class="space-y-sm">
+<div class="group">
+<label class="font-label-caps text-[10px] text-outline uppercase block mb-1">Signal Source</label>
+<input class="w-full bg-transparent border-b border-outline-variant focus:border-primary-container focus:ring-0 text-on-surface font-code-sm py-xs transition-all outline-none" placeholder="YOUR_EMAIL@DOMAIN.COM" type="email"/>
+</div>
+<div class="group">
+<label class="font-label-caps text-[10px] text-outline uppercase block mb-1">Payload Content</label>
+<textarea class="w-full bg-transparent border-b border-outline-variant focus:border-primary-container focus:ring-0 text-on-surface font-code-sm py-xs transition-all outline-none resize-none" placeholder="DESCRIBE_THE_MISSION..." rows="3"></textarea>
+</div>
+<button class="w-full py-sm bg-on-background text-background font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary glow-primary transition-all duration-300 uppercase tracking-widest flex items-center justify-center gap-sm" type="submit">
+                                INQUIRY <span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-lg border-t border-outline-variant bg-background dark:bg-background">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-[1200px] mx-auto w-full gap-md">
+<div class="font-display text-headline-md text-on-background tracking-tighter">
+                PORTILLO<span class="text-primary-container">_</span>
+</div>
+<div class="flex gap-md">
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed hover:glow-primary transition-all uppercase" href="#">GITHUB</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed hover:glow-primary transition-all uppercase" href="#">LINKEDIN</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed hover:glow-primary transition-all uppercase" href="#">TWITTER</a>
+<a class="font-code-sm text-code-sm text-on-surface-variant hover:text-primary-fixed hover:glow-primary transition-all uppercase" href="#">EMAIL</a>
+</div>
+<p class="font-code-sm text-[10px] text-outline text-center md:text-right uppercase">
+                © 2024 JACOB PORTILLO. ALL RIGHTS RESERVED.<br/>
+                BUILD_HASH: 0x7F4E29A1
+            </p>
+</div>
+</footer>
+<script>
+        // Matrix Effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789$+-*/=%"\'#&_(),.;:?!\\|{}<>[]';
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = '#00ff41';
+            ctx.font = fontSize + 'px "JetBrains Mono"';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = letters.charAt(Math.floor(Math.random() * letters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simple visibility observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            // Apply animations to all sections except hero
+            if (!section.classList.contains('matrix-bg')) {
+                section.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-4');
+                observer.observe(section);
+            }
+        });
+    </script>
+</body></html>
